@@ -23,7 +23,7 @@ module.exports = app => {
                 // 查询db3是否正常,不正常则重启
                 try {
                     const result = await ctx.model.System.count({}).exec();
-                    app.logger.info(`-----------db3--查询db3数据库是否可用1111111----${result}------`);
+                    app.logger.info(`db3查询db3数据库是否可用----${result}------`);
 
                     if (app.config.is_web_task_run) ctx.service.web.reportTask.saveWebReportDatasForMongodb();
                 } catch (err) {

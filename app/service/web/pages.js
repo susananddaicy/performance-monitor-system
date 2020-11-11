@@ -32,7 +32,6 @@ class PagesService extends Service {
         const group_id = {
             url: '$url',
         };
-
         return url ? await this.oneThread(appId, queryjson, pageNo, pageSize, group_id)
             : await this.moreThread(appId, type, beginTime, endTime, queryjson, pageNo, pageSize, group_id);
 
@@ -93,7 +92,7 @@ class PagesService extends Service {
             }
         });
         /* eslint-enable */
-
+        this.app.logger.info(`--------datalist-------${JSON.stringify(result)}------`);
         return {
             datalist: result,
             totalNum: copdistinct.length,

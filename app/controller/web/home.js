@@ -30,10 +30,6 @@ class HomeController extends Controller {
         await ctx.render('login', {
             data: {
                 title: '登录系统',
-                gh_client_id: this.app.config.github.client_id,
-                gh_scope: this.app.config.github.scope,
-                wb_client_id: this.app.config.weibo.client_id,
-                wb_scope: this.app.config.weibo.scope
             },
         });
     }
