@@ -1,0 +1,60 @@
+{
+  "name": "egg-mongoose-performance-system",
+  "version": "1.0.0",
+  "description": "前端性能监控系统",
+  "private": true,
+  "dependencies": {
+    "address": "^1.0.3",
+    "egg": "^2.2.1",
+    "egg-alinode": "^2.0.1",
+    "egg-cors": "^2.1.0",
+    "egg-mongoose": "^3.1.0",
+    "egg-redis": "^2.0.0",
+    "egg-router-plus": "^1.3.0",
+    "egg-scripts": "^2.10.0",
+    "egg-socket.io": "^4.1.4",
+    "ldapjs": "^1.0.2"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.0.0",
+    "cron-parser": "^2.6.0",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-email": "^1.0.2",
+    "egg-mock": "^3.14.0",
+    "egg-view-ejs": "^2.0.0",
+    "eslint": "^4.11.0",
+    "eslint-config-egg": "^6.0.0",
+    "eslint-plugin-html": "^5.0.0",
+    "kafka-node": "^4.0.0",
+    "md5": "^2.2.1",
+    "nodemailer": "^5.1.1",
+    "ua-parser-js": "^0.7.18",
+    "webstorm-disable-index": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --workers=2 --title=performance",
+    "stop": "egg-scripts stop --title=performance",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT"
+}

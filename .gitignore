@@ -1,0 +1,14 @@
+logs/
+config/config.prod_1.js
+npm-debug.log
+yarn-error.log
+node_modules/
+package-lock.json
+yarn.lock
+coverage/
+.idea/
+run/
+.DS_Store
+*.sw*
+*.un~
+buildlogs/
