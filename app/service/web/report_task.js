@@ -49,6 +49,7 @@ class ReportTaskService extends Service {
 
     // 单个item储存数据
     async getWebItemDataForRedis() {
+        // Redis Rpop 命令用于移除列表的最后一个元素，返回值为移除的元素。
         let query = await this.app.redis.rpop('web_repore_datas');
         if (!query) return;
         query = JSON.parse(query);
@@ -60,11 +61,13 @@ class ReportTaskService extends Service {
         if (this.cacheJson[item.app_id]) {
             system = this.cacheJson[item.app_id];
         } else {
+            // 获取系统设置的内容
             system = await this.service.system.getSystemForAppId(item.app_id);
             this.cacheJson[item.app_id] = system;
         }
         // 是否禁用上报
         if (system.is_use !== 0) return;
+        // 性能监控
         if (system.is_statisi_pages === 0 && querytype === 1) this.savePages(item, system.slow_page_time);
         if (system.is_statisi_resource === 0 || system.is_statisi_ajax === 0) this.forEachResources(item, system);
         if (system.is_statisi_error === 0) this.saveErrors(item);

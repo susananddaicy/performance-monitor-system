@@ -31,11 +31,11 @@
 				<div>
 					<span class="name">输入页面地址：</span>
 					<input class="inp" v-model="url" placeholder="选填、输入页面地址" type="text">
+					<button class="btn btn-default" @click="searchForUrl">搜索</button>
 				</div>
 				<div class="ml30">
 					<span class="name">选择日期：</span>
 					<input id="zane-calendar-1" class="inp w-200" type="text" placeholder="选择日期查询">
-					<button class="btn btn-default" @click="searchForUrl">搜索</button>
 				</div>
 			</div>
 			<div class="tipscolor mt10" v-if="errText">{{errText}}</div>

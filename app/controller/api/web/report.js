@@ -21,8 +21,9 @@ class ReportController extends Controller {
         query.ip = ctx.get('X-Real-IP') || ctx.get('X-Forwarded-For') || ctx.ip;
         query.url = query.url || ctx.headers.referer;
         query.user_agent = ctx.headers['user-agent'];
-
+        // config.report_data_type = 'redis'
         if (this.app.config.report_data_type === 'redis') this.saveWebReportDataForRedis(query);
+
         if (this.app.config.report_data_type === 'kafka') this.saveWebReportDataForKafka(query);
         if (this.app.config.report_data_type === 'mongodb') this.saveWebReportDataForMongodb(ctx);
     }
@@ -32,6 +33,8 @@ class ReportController extends Controller {
         try {
             if (this.app.config.redis_consumption.total_limit_web){
                 // 限流
+                // Redis Llen 命令用于返回列表的长度。
+                // total_limit_web: 10000
                 const length = await this.app.redis.llen('web_repore_datas');
                 if (length >= this.app.config.redis_consumption.total_limit_web) return;
             }

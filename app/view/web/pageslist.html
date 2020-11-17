@@ -135,9 +135,9 @@
 	</div>
 	<div v-show="lable==1">
 		<!--  分页 -->
-		<div class="tc common_page_style mt10" v-show="isLoadend&&listdata.length">
+		<!-- <div class="tc common_page_style mt10" v-show="isLoadend&&listdata.length">
 			<div id="copot-page-pages" class="copot-page"></div>
-		</div>
+		</div> -->
 		<!-- 暂无数据 -->
 		<div class="tc mt20" v-if="!listdata.length">暂无数据!</div>
 	</div>
@@ -327,7 +327,7 @@
 						this.isLoadend = true;
 						if (!data.data.datalist && !data.data.datalist.length) return;
 	
-						this.listdata = data.data.datalist
+						this.listdata = data.data.datalist;
 
 						new Page({
 							parent: $(pageName),
@@ -342,8 +342,8 @@
             const xAxislist = data.data.datalist.reverse().map((item) => {
 							return new Date(item.create_time).format('hh:mm');
 						})
-            const itemsData = data.data.datalist.map((item) => {
-							return item.load_time
+            const itemsData = data.data.datalist.reverse().map((item) => {
+							return item.load_time;
 						})
 						console.log('------->', xAxislist, itemsData);
 						myChart = echarts.init(document.getElementById('custom-chart'));
