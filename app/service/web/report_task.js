@@ -55,7 +55,6 @@ class ReportTaskService extends Service {
 
         const querytype = query.type || 1;
         const item = await this.handleData(query);
-
         let system = {};
         // 做一次appId缓存
         if (this.cacheJson[item.app_id]) {
@@ -413,7 +412,7 @@ class ReportTaskService extends Service {
 
     // 存储错误信息
     saveErrors(data) {
-        if (!data.error_list && !data.error_list.length) return;
+        if (!data.error_list || !data.error_list.length) return;
         data.error_list.forEach(item => {
             const newurl = url.parse(item.data.resourceUrl || '');
             const newName = newurl.protocol + '//' + newurl.host + newurl.pathname;
