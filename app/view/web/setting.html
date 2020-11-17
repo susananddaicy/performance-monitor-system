@@ -94,8 +94,8 @@
 	.email_content .item{
 		display: inline-block;
 		padding:6px 5px 5px 15px;
-		border:solid 1px #8776f7;
-		color:#8776f7;
+		border:solid 1px #409EFF;
+		color:#409EFF;
 		border-radius:20px;
 		margin-right:20px;
 	}
@@ -174,35 +174,6 @@
 			<div class="content">
 				<span class="mr10">是否启用:</span><input type="checkbox" class="js-switch" checked />
 			</div>
-			<h1 class="h1">2、使用SDK部署方式</h1>
-			<div class="content">
-				<div class="item">2.1、下载需要的SDK</div>
-				<a href="/public/file/web-report-default.min.js.zip"><button class="btn btn-default">通用SDK</button></a>
-				<a href="/public/file/web-report-fetch.min.js.zip"><button class="btn btn-default ml10">Fetch专用SDK</button></a>
-				<a href="/public/file/web-report-jquery.min.js.zip"><button class="btn btn-default ml10">Jquery专用SDK</button></a>
-				<a href="/public/file/web-report-axios.min.js.zip"><button class="btn btn-default ml10">Axios专用SDK</button></a>
-				<a href="/public/file/web-report-none.min.js.zip"><button class="btn btn-default ml10">业务代码触发SDK</button></a>
-				<div class="item mt20">2.2、详细使用文档请参考以下SDK链接</div>
-				<p>在html的头部引以下下代码</p>
-				<div class="script-text mb20">
-					<pre><\script src="/dist/performance-report-default.min.js"><\/script>
-<\script>
-Performance({
-  	domain: '{{location.origin}}/api/v1/report/web', 
-  	add:{
-  		appId:'{{systemInfo.app_id}}'
-  	}
-})
-<\/script>
-</pre>
-				</div>
-				<a href="https://github.com/wangweianger/performance-report" target="_target">浏览器端性能上报SDK使用文档</a>
-			</div>
-			<h1 class="h1">3、部署脚本说明</h1>
-			<div class="content code">
-				<p>复制生成的代码，将其粘贴在<code>&lt;head&gt;</code>中。</p>
-				<p class="notice">注意：需要将代码粘贴在<code>&lt;meta&gt;</code>后面，所有<code>&lt;script&gt;</code>前面。</p>
-			</div>
 		</div>
 		<div class="block" v-show="lable==2">
 			<h1 class="h1">各项阀值设置</h1>
@@ -218,10 +189,6 @@ Performance({
 				<div class="item">
 					<span class="left">页面慢加载阀值(s)：</span>
 					<input type="text" v-model.trim="systemInfo.slow_page_time" placeholder="默认8s">
-				</div>
-				<div class="item">
-					<span class="left">AJAX慢加载阀值(s)：</span>
-					<input type="text" v-model.trim="systemInfo.slow_ajax_time" placeholder="默认8s">
 				</div>
 				<div class="item">
 					<span class="left">JS慢加载阀值(s)：</span>
@@ -430,7 +397,7 @@ new Vue({
 				elem.checked = this.systemInfo.is_highest_use == 0 ? true : false;
 			}
 
-			const init = new Switchery(elem, { color: '#8776f7' });
+			const init = new Switchery(elem, { color: '#409EFF' });
 			const _this = this;
 
 			elem.onchange = function () {
@@ -482,7 +449,7 @@ new Vue({
 						html.checked = this.systemInfo.is_statisi_error == 0 ? true : false;
 						break;
 				}
-				var switchery = new Switchery(html, { color: '#8776f7' });
+				var switchery = new Switchery(html, { color: '#409EFF' });
 				html.onchange = () => {
 					let value = html.checked ? 0 : 1
 					switch (index) {

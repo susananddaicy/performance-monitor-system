@@ -18,7 +18,7 @@ PopLayer.prototype.extend=function(json1,json2){
 PopLayer.prototype.varLiang=function(json){
     this.setting={
         time:2000,
-        header:"信息",     //头部信息
+        header:"提示",     //头部信息
         haveHeader:true,  //是否显示头部
         maskHide:true,   //是否点击遮罩隐藏
         closeBut:false,    //是否需要关闭按钮

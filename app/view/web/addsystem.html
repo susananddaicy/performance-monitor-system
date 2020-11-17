@@ -120,7 +120,6 @@
 	<div class="com_slide_tab_x mt30 mb30">
 		<div class="item" :class="{'active':lable==1}" @click="checkoutLabel(1)">应用部署</div>
 		<div class="item" :class="{'active':lable==2}" @click="checkoutLabel(2)">统计设置</div>
-		<div class="item" :class="{'active':lable==3}" @click="checkoutLabel(3)">部署说明</div>
 	</div>
 	<div class="setting-body">
 		<div class="block" v-show="lable==1">
@@ -201,43 +200,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="block" v-show="lable==3">
-			<h1 class="h1">1、使用SDK部署方式</h1>
-			<div class="content">
-				<div class="item">1.1、下载需要的SDK</div>
-				<a href="/public/file/web-report-default.min.js.zip"><button class="btn btn-default">通用SDK</button></a>
-				<a href="/public/file/web-report-fetch.min.js.zip"><button class="btn btn-default ml10">Fetch专用SDK</button></a>
-				<a href="/public/file/web-report-jquery.min.js.zip"><button class="btn btn-default ml10">Jquery专用SDK</button></a>
-				<a href="/public/file/web-report-axios.min.js.zip"><button class="btn btn-default ml10">Axios专用SDK</button></a>
-				<a href="/public/file/web-report-none.min.js.zip"><button class="btn btn-default ml10">业务代码触发SDK</button></a>
-				<div class="item mt20">1.2、详细使用文档请参考以下SDK链接</div>
-				<div class="script-text mb20">
-					<pre><\script src="/dist/performance-report-default.min.js"><\/script>
-
-<\script>
-Performance({
-  	domain: '{{location.origin}}/api/v1/report/web', 
-  	add:{
-  		appId:'{{query.app_id}}'
-  	}
-})
-<\/script>
-</pre>
-				</div>
-				<a href="https://github.com/wangweianger/performance-report" target="_target">浏览器端性能上报SDK使用文档</a>
-			</div>
-			<h1 class="h1">2、部署脚本说明</h1>
-			<div class="content code">
-				<p>复制生成的代码，将其粘贴在<code>&lt;head&gt;</code>中。</p>
-				<p class="notice">注意：需要将代码粘贴在<code>&lt;meta&gt;</code>后面，所有<code>&lt;script&gt;</code>前面。</p>
-			</div>
-		</div>
 	</div>
 	<div>
-		<button class="button left-botton" @click="addSystem" v-if="!isAdd">保存</button>
+		<button class="button left-botton" @click="addSystem" v-if="!isAdd && lable!==3">保存</button>
 	</div>
 </div>
-x<script src="//cdn.bootcss.com/switchery/0.8.2/switchery.min.js"></script>
+<script src="//cdn.bootcss.com/switchery/0.8.2/switchery.min.js"></script>
 <script>
 new Vue({
 	el: '#vue_id',
@@ -285,7 +253,7 @@ new Vue({
 		settingIsUse() {
 			let elem = document.querySelector('.js-switch');
 			elem.checked = true;
-			const init = new Switchery(elem, { color: '#8776f7' });
+			const init = new Switchery(elem, { color: '#2077ff' });
 			const _this = this;
 
 			elem.onchange = function () {

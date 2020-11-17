@@ -4,16 +4,16 @@
 		margin: 100px auto 100px;
 	}
 	.com_between:hover{
-		background:#f9f8ff;
+		background:#DBECFC;
 		cursor: pointer;
 	}
 	.com_between button.btn{
 		width:250px;
 	}
-	.com_between .left .icon{
+	.com_between .left .cor1{
 		width:auto;
 		font-size:60px;
-		color:#bbb;
+		color:#409EFF;
 	}
 	@media (max-width: 768px) {
 		.home_body {
@@ -31,7 +31,7 @@
 	<div v-if="isLoadend && datalist.length">
 		<div class="com_block com_between mt50" v-for="item in datalist" @click="selectSystem(2,item)">
 			<div class="left">
-				<span v-if="item.type=='web'" class="icon iconfont">&#xe6fc;</span>
+				<span class="iconfont cor1">&#xe61a;</span>
 				<div class="h1 mt10">{{item.type|systemType}}</div>
 			</div>
 			<div class="right">
@@ -57,7 +57,7 @@
 						<th class="tc" v-if="item.type=='web'">JS资源阀值</th>
 						<th class="tc" v-if="item.type=='web'">CSS资源阀值</th>
 						<th class="tc" v-if="item.type=='web'">IMG资源阀值</th>
-						<th class="tc">AJAX加载阀值</th>
+						<!-- <th class="tc">AJAX加载阀值</th> -->
 						<th class="tc" v-if="item.type=='web'">是否统计页面性能</th>
 						<th class="tc">是否统计AJAX性能</th>
 						<th class="tc" v-if="item.type=='web'">是否统计页面资源性能</th>
@@ -69,7 +69,6 @@
 						<td class="tc" v-if="item.type=='web'">{{item.slow_js_time}}s</td>
 						<td class="tc" v-if="item.type=='web'">{{item.slow_css_time}}s</td>
 						<td class="tc" v-if="item.type=='web'">{{item.slow_img_time}}s</td>
-						<td class="tc">{{item.slow_ajax_time}}s</td>
 						<td class="tc" v-if="item.type=='web'">{{item.is_statisi_pages==0?'是':'否'}}</td>
 						<td class="tc">{{item.is_statisi_ajax==0?'是':'否'}}</td>
 						<td class="tc" v-if="item.type=='web'">{{item.is_statisi_resource==0?'是':'否'}}</td>

@@ -18,7 +18,7 @@ fieldset, img { border: 0; }
 li { list-style: none; }
 input, textarea, select { font-family: inherit; font-size: inherit; font-weight: inherit; outline: none; -webkit-appearence: none; -ms-appearence: none; }
 button, html input[type="button"], input[type="reset"], input[type="submit"] { border: none; background: none; -webkit-appearance: none; outline: none; }
-a { -webkit-touch-callout: none; text-decoration: none; outline: 0; color:#8776f7;text-decoration:none;}
+a { -webkit-touch-callout: none; text-decoration: none; outline: 0; color:#409EFF;text-decoration:none;}
 em, i { font-style: normal; }
 iframe { display: none; }
 
@@ -135,22 +135,20 @@ table.table tr td{
     cursor:pointer;
 }
 .btn-default{
-    color:#8776f7;
+    color:#409EFF;
     background:#fff;
-    border:solid 1px #8776f7;
+    border:solid 1px #409EFF;
 }
 .btn-default:hover{
-    color:#A79AFE;
-    border:solid 1px #A79AFE;
+    color:#55A9FF;
 }
 .btn-main{
     color:#fff;
-    background:#8776f7;
-    border:solid 1px #8776f7;
+    background:#409EFF;
+    border:solid 1px #409EFF;
 }
 .btn-main:hover{
-    background:#A79AFE;
-    border:solid 1px #A79AFE;
+    background:#55A9FF;
 }
 .com_content{
      margin-top:70px;
@@ -254,11 +252,11 @@ table.table tr td{
     bottom:0;
     width:100%;
     height:2px;
-    background:#8776f7;
+    background:#409EFF;
     display: none;
 }
 .com_slide_tab_x .active{
-    color:#8776f7;
+    color:#409EFF;
 }
 .com_slide_tab_x .active:after{
     display:block;
@@ -301,14 +299,14 @@ table.table tr td{
     border-radius:3px;
     margin-top: 10px;
     display: inline-block;
-    color:#8776f7;
+    color:#409EFF;
     font-size:14px;
     text-align:center;
-    border: solid 1px #8776f7; 
+    border: solid 1px #409EFF; 
     overflow:hidden;
 }
 .component_search .select .times span {
-    color: #8776f7;
+    color: #409EFF;
     margin: 0 5px; 
     font-size:14px;
 }
@@ -337,11 +335,10 @@ table.table tr td{
     border-radius: 5px; 
 }
 .component_search .select .select-time li:hover {
-    background: #a79af9;
-    color:#fff;
+    background: #ecf5ff;
 }
 .component_search .select .select-time li.active {
-    background: #9181f8; 
+    background: #409EFF; 
     color:#fff;
 }
 .component_search .select .select-time .btn {
@@ -403,9 +400,9 @@ table.table tr td{
     margin-right:6px;
 }
 .com_select_item.active{
-    background:#8776f7;
+    background:#409EFF;
     color:#fff;
-    border:solid 1px #8776f7;
+    border:solid 1px #409EFF;
 }
 
 .com_but_block{
@@ -420,7 +417,7 @@ table.table tr td{
     background:#ddd;
 }
 .com_but_block .btn-main{
-    background:#8776f7;
+    background:#409EFF;
     color:#fff;
 }
 /* model */
@@ -483,7 +480,7 @@ table.table tr td{
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    background: #887FFE;
+    background: #409EFF;
     float: left;
     margin: 13px 10px 0 10px;
 }

@@ -5,7 +5,11 @@ const Controller = require('egg').Controller;
 class PvUvIpController extends Controller {
     // 获得实时概况
     async getPvUvIpSurvey() {
+
         const { ctx } = this;
+
+        // await ctx.service.web.pvuvipTask.getWebPvUvIpByDay();
+
         const query = ctx.request.query;
         const appId = query.appId;
         if (!appId) throw new Error('pvuvip概况统计：appId不能为空');

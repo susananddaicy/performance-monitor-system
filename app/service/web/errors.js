@@ -34,6 +34,29 @@ class ErroesService extends Service {
             : await this.moreThread(appId, type, beginTime, endTime, queryjson, pageNo, pageSize, group_id);
     }
 
+
+    // 平均求值数多线程
+    async totalError(ctx) {
+        const _query = ctx.request.query;
+        const appId = _query.appId;
+
+        const result = [];
+        const timeback = new Date().getTime() - 30 * 60 * 1000;
+
+        for(let i = 0; i <= 30; i++ ) {
+            const query = { create_time: { $lt: new Date(timeback + i * 60 * 1000) , $gt: new Date(timeback + i * 60 * 1000 - 1 * 60 * 1000) } };
+            result.push({
+               time:  new Date(timeback + i * 60 * 1000),
+               count: await this.app.models.WebErrors(appId).count(query).read('sp').exec()
+            })
+        }
+    
+        return {
+            datalist: result
+        };
+    }
+
+
     // 平均求值数多线程
     async moreThread(appId, type, beginTime, endTime, queryjson, pageNo, pageSize, group_id) {
         const result = [];
@@ -45,31 +68,36 @@ class ErroesService extends Service {
         if (distinct && distinct.length) {
             distinct = distinct.slice(betinIndex, betinIndex + pageSize);
         }
+
         const resolvelist = [];
         for (let i = 0, len = distinct.length; i < len; i++) {
-            resolvelist.push(
-                Promise.resolve(
-                    this.app.models.WebErrors(appId).aggregate([
-                        (type ?
-                            { $match: { category: type, resource_url: distinct[i], create_time: { $gte: new Date(beginTime), $lte: new Date(endTime) } } }
-                            :
-                            { $match: { resource_url: distinct[i], create_time: { $gte: new Date(beginTime), $lte: new Date(endTime) } } }
-                        ),
-                        {
-                            $group: {
-                                _id: group_id,
-                                count: { $sum: 1 },
-                            },
-                        },
-                    ]).read('sp')
-                        .exec()
-                )
-            );
+
+            const data = await this.app.models.WebErrors(appId).aggregate([
+                (type ?
+                    { $match: { category: type, resource_url: distinct[i], create_time: { $gte: new Date(beginTime), $lte: new Date(endTime) } } }
+                    :
+                    { $match: { resource_url: distinct[i], create_time: { $gte: new Date(beginTime), $lte: new Date(endTime) } } }
+                ),
+                {
+                    $group: {
+                        _id: group_id,
+                        count: { $sum: 1 },
+                    },
+                },
+            ]).read('sp')
+                .exec()
+            resolvelist.push(data);
         }
+
         const all = await Promise.all(resolvelist) || [];
+   
         all.forEach(item => {
-            result.push(item[0]);
+            item.forEach((i) => {
+                result.push(i);
+            });
         });
+
+
         /* eslint-disable */
         result.sort(function (obj1, obj2) {
             let val1 = obj1.count;

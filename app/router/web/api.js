@@ -87,5 +87,9 @@ module.exports = app => {
     apiV1Router.get('error/getOneErrorList', tokenRequired, error.getOneErrorList);
     // 单个错误详情
     apiV1Router.get('error/getErrorDetail', tokenRequired, error.getErrorDetail);
+    // 获得错误分类信息
+    apiV1Router.get('error/getTotalErrorCount', tokenRequired, error.getTotalErrorCount);
+    
+
 
 };

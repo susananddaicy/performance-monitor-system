@@ -19,6 +19,22 @@ class ErrorController extends Controller {
         });
     }
 
+    // 获得error分类列表
+    async getTotalErrorCount() {
+        const { ctx } = this;
+        const query = ctx.request.query;
+        const appId = query.appId;
+
+        if (!appId) throw new Error('获得error分类列表：appId不能为空');
+
+        const result = await ctx.service.web.errors.totalError(ctx);
+
+        ctx.body = this.app.result({
+            data: result,
+        });
+    }
+
+
     // 获得单个ERROR资源列表信息
     async getOneErrorList() {
         const { ctx } = this;

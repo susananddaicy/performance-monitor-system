@@ -152,11 +152,11 @@ module.exports = () => {
         client: {
             // service: '163',
             host: 'corp.netease.com',
-            port: 993,
-            secure: true,
+            port: 25,
+            secure: false,
             auth: {
                 user: 'daichunyu@corp.netease.com',
-                pass: 'xxxxxx',
+                pass: process.env.password, // 密码通过 node 的process.env 设置 保证安全
             },
         },
     };
