@@ -38,7 +38,7 @@ module.exports = () => {
     config.user_pwd_salt_addition = 'ZANEHELLOBEAUTIFUL';
 
     // 用户登录态持续时间 1 天
-    config.user_login_timeout = 86400;
+    config.user_login_timeout = 86400 * 365;
 
     // web浏览器端定时任务是否执行
     config.is_web_task_run = true;
