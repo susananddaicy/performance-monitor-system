@@ -17,8 +17,6 @@ module.exports = () => {
 
     config.middleware = [];
 
-    // 线上环境此处替换为项目根域名 例如:blog.seosiwei.com (这里不需要填写http|https和斜杠等字符)
-    // 用于安全校验和回调域名根路径 开发路径域名
     config.host = '127.0.0.1';
 
     config.port = 7001;
@@ -37,7 +35,7 @@ module.exports = () => {
     // 用户密码加盐随机值
     config.user_pwd_salt_addition = 'ZANEHELLOBEAUTIFUL';
 
-    // 用户登录态持续时间 1 天
+    // 用户登录态持续时间 365 天
     config.user_login_timeout = 86400 * 365;
 
     // web浏览器端定时任务是否执行
@@ -73,7 +71,7 @@ module.exports = () => {
         },
         producer: {
             web: {
-                topic: 'zane_perfor_web',
+                topic: 'web',
                 partition: 0, // default 0
                 attributes: 0, // default: 0
                 // timestamp: Date.now(),
@@ -83,14 +81,14 @@ module.exports = () => {
         // 优先选择consumer消费，两种消费配置任留一种即可
         consumer: {
             web: {
-                topic: 'zane_perfor_web',
+                topic: 'web',
                 offset: 0, // default 0
                 partition: 0, // default 0
             }
         },
         consumerGroup: {
             web: { // ConsumerGroup(options, topics)
-                topic: 'zane_perfor_web',
+                topic: 'web',
                 groupId: 'WebPerformanceGroup',
                 commitOffsetsOnFirstJoin: true,
             }
